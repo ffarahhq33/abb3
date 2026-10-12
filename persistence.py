@@ -393,12 +393,12 @@ class ABB7SQLiteStore:
             self._connection.close()
 
 
-class ABB7OutboxSender(threading.Thread):
+class ABB3OutboxSender(threading.Thread):
     """Background HTTP sender; it never blocks the sensor/main-loop thread."""
 
     def __init__(
         self,
-        store: ABB7SQLiteStore,
+        store: ABB3SQLiteStore,
         api_url: str,
         api_key: str,
         enabled: bool,
