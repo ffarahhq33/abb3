@@ -2,7 +2,7 @@
 
 ABB7 is a Raspberry Pi production-tracking service for the ABB 7 line. It reads
 the production sensor, exchanges commands and live values with Node-RED over
-MQTT, writes production records to Google Sheets, keeps restart-safe state in
+MQTT, writes production records to Google Sheets, keeps restart-safe state ingit
 SQLite, and forwards durable events to the central production data platform on
 the AI TOP ATOM PC.
 
