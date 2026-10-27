@@ -95,7 +95,7 @@ MQTT_TOPIC_LIVE_SNAPSHOT = "smartchecksheet/live"
 WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyU_LinljdxsOlPq5buYHSbVcpS5QBRlOVLjWxYYlT1liOuE0Wp0KaUyg78pSPX7nfV/exec"
 
 # SQLite recovery/outbox configuration. The API sender is intentionally OFF
-# until ABB7_API_ENABLED=true and the future Express endpoint is configured.
+# until ABB3_API_ENABLED=true and the future Express endpoint is configured.
 SCRIPT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 SQLITE_DATABASE_PATH = os.environ.get(
     "ABB3_SQLITE_PATH",
@@ -336,7 +336,7 @@ def restore_runtime_state():
         return False
 
     if snapshot is None:
-        print("[SQLITE] No previous ABB7 state found. Starting with current defaults.")
+        print("[SQLITE] No previous ABB3 state found. Starting with current defaults.")
         checkpoint_runtime_state(force=True, reason="first startup")
         return False
 
@@ -387,7 +387,7 @@ def restore_runtime_state():
     recovered_from_sqlite = True
 
     print(
-        "[SQLITE] Restored ABB7 state: "
+        "[SQLITE] Restored ABB3 state: "
         f"Shift={current_shift.get('shift_id')} | "
         f"Hourly={hourly_output} | Model={total_output} | Shift Total={shift_total_output}"
     )
@@ -1352,6 +1352,7 @@ def publish_live_data():
 
     payload = {
         "shift_id": current_shift["shift_id"],
+        "line_code": LINE_CODE,
         "hour_slot": get_hour_slot(),
         "line": current_shift["line"],
         "date": current_shift["date"],

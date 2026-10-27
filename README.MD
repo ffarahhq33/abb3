@@ -357,3 +357,6 @@ Downtime cancellation clears the shared session; a running timer also returns to
 Normal. Idle cancellation still sends the navigation acknowledgement, and
 repeated cancellation commands cannot duplicate it. Successful downtime logging
 continues returning to Hourly Checksheet.
+## Smart Checksheet integration
+
+See [CHECKSHEET-SETUP.md](CHECKSHEET-SETUP.md) for the AI PC connection, private MQTT access, and independent durable event relay setup.
